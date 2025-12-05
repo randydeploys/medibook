@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AvailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
 class Availability
@@ -15,12 +16,16 @@ class Availability
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\Range(min: 0, max: 6)]
     private ?int $dayOfWeek = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Assert\NotBlank]
+    #[Assert\LessThan(propertyPath: 'endTime')]
     private ?\DateTime $startTime = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Assert\NotBlank]
     private ?\DateTime $endTime = null;
 
     #[ORM\ManyToOne(inversedBy: 'availabilities')]

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AppointmentRepository::class)]
 class Appointment
@@ -14,12 +15,15 @@ class Appointment
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\GreaterThan('today')]
     private ?\DateTimeImmutable $startAt = null;
 
     #[ORM\Column]
+    #[Assert\GreaterThan(propertyPath: 'startAt')]
     private ?\DateTimeImmutable $endAt = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $status = null;
 
     #[ORM\ManyToOne(inversedBy: 'appointments')]
