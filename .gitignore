@@ -1,4 +1,3 @@
-
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -12,9 +11,49 @@
 ###> phpunit/phpunit ###
 /phpunit.xml
 /.phpunit.cache/
+/test-results/
+/coverage/
 ###< phpunit/phpunit ###
 
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> symfony/webapp-pack ###
+# Ignore les uploads locaux (ex: images des docteurs en dev)
+/public/uploads/
+###< symfony/webapp-pack ###
+
+###> Node.js / Frontend ###
+# Même avec AssetMapper, tu auras peut-être des outils de build JS/CSS
+/node_modules/
+npm-debug.log
+yarn-error.log
+/public/build/
+###< Node.js / Frontend ###
+
+###> Docker ###
+# Ignore la configuration locale de Docker (ex: ports différents)
+docker-compose.override.yml
+###< Docker ###
+
+###> IDE & Editors (Indispensable pour le travail en équipe) ###
+# PhpStorm / IntelliJ
+.idea/
+# VS Code
+.vscode/
+# Sublime Text
+*.sublime-workspace
+# Vim
+*.swp
+*.swo
+###< IDE & Editors ###
+
+###> OS Files (Pour ne pas polluer le repo) ###
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+ehthumbs.db
+###< OS Files ###
