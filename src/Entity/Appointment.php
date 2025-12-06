@@ -15,7 +15,6 @@ class Appointment
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Assert\GreaterThan('today')]
     private ?\DateTimeImmutable $startAt = null;
 
     #[ORM\Column]
